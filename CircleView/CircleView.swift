@@ -56,6 +56,7 @@ public class CircleView: UIView {
         view.addSubview(self)
     }
     
+    // 设置显示在内圆里的图片
     public func setImage(image: UIImage) {
         imageView = UIImageView(image: image)
         imageView!.layer.masksToBounds = true
@@ -146,7 +147,7 @@ public class CircleView: UIView {
             context.fillPath()
 
             // 在上面画高亮圆弧
-            if ringWidth >= trackWidth {
+            if trackWidth > 0 && ringWidth >= trackWidth {
                 context.setStrokeColor(trackColor.cgColor)
                 context.setLineWidth(trackWidth)
 
