@@ -34,6 +34,10 @@ public class CircleView: UIView {
     private var radius: CGFloat {
         return centerRadius + ringWidth
     }
+    
+    public override var intrinsicContentSize: CGSize {
+        return CGSize(width: 2 * radius, height: 2 * radius)
+    }
 
     public var delegate: CircleViewDelegate?
     
