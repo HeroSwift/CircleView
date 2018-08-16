@@ -61,8 +61,13 @@ public class CircleView: UIView {
     }
     
     // 设置显示在内圆里的图片
-    public func setImage(image: UIImage) {
+    public func setImage(_ image: UIImage) {
+        if let lastImageView = imageView {
+            lastImageView.removeFromSuperview()
+        }
         imageView = UIImageView(image: image)
+        // 保持原比例，不填充
+        imageView!.contentMode = .center
         imageView!.layer.masksToBounds = true
         addSubview(imageView!)
     }
@@ -113,6 +118,7 @@ public class CircleView: UIView {
             return
         }
         if let point = touches.first?.location(in: self) {
+            delegate?.circleViewDidTouchMove(self, point.x, point.y)
             let inside = isPointInside(point.x, point.y)
             if inside != isTouchInside {
                 isTouchInside = inside
