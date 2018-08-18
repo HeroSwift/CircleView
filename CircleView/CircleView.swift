@@ -6,6 +6,22 @@ public class CircleView: UIView {
     // 内圆
     public var centerRadius = CGFloat(36.0)
     public var centerColor = UIColor.white
+    public var centerImage: UIImage? {
+        didSet {
+            // 移除老的
+            if let imageView = centerImageView {
+                imageView.removeFromSuperview()
+            }
+            if let image = centerImage {
+                centerImageView = UIImageView(image: image)
+                // 保持原比例，不填充
+                centerImageView!.contentMode = .center
+                centerImageView!.layer.masksToBounds = true
+                addSubview(centerImageView!)
+            }
+        }
+    }
+    
 
     // 圆环
     public var ringWidth = CGFloat(7.0)
@@ -20,10 +36,10 @@ public class CircleView: UIView {
     
     // 轨道的值 0.0 - 1.0，影响轨道圆弧的大小
     public var trackValue = 0.0
-    
-    // 内圆支持放一张图片
-    public var imageView: UIImageView?
 
+    // 存储当前使用的 UIImageView
+    private var centerImageView: UIImageView?
+    
     // 是否正在触摸
     private var isTouching = false
 
@@ -58,18 +74,6 @@ public class CircleView: UIView {
     public func show(in view: UIView) {
         sizeToFit()
         view.addSubview(self)
-    }
-    
-    // 设置显示在内圆里的图片
-    public func setImage(_ image: UIImage) {
-        if let lastImageView = imageView {
-            lastImageView.removeFromSuperview()
-        }
-        imageView = UIImageView(image: image)
-        // 保持原比例，不填充
-        imageView!.contentMode = .center
-        imageView!.layer.masksToBounds = true
-        addSubview(imageView!)
     }
 
     // 点是否在内圆中
@@ -177,7 +181,7 @@ public class CircleView: UIView {
     }
     
     public override func layoutSubviews() {
-        if let imageView = imageView {
+        if let imageView = centerImageView {
             imageView.frame = CGRect(x: ringWidth, y: ringWidth, width: centerRadius * 2, height: centerRadius * 2)
             imageView.layer.cornerRadius = centerRadius
         }
