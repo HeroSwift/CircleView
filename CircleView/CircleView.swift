@@ -4,8 +4,13 @@ import UIKit
 public class CircleView: UIView {
 
     // 内圆
-    public var centerRadius = CGFloat(36.0)
-    public var centerColor = UIColor.white
+    public var centerRadius: CGFloat = 36 {
+        didSet {
+            invalidateIntrinsicContentSize()
+        }
+    }
+    
+    public var centerColor = UIColor(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0)
     public var centerImage: UIImage? {
         didSet {
             // 移除老的
@@ -24,15 +29,20 @@ public class CircleView: UIView {
     
 
     // 圆环
-    public var ringWidth = CGFloat(7.0)
+    public var ringWidth: CGFloat = 7 {
+        didSet {
+            invalidateIntrinsicContentSize()
+        }
+    }
+    
     public var ringColor = UIColor(red: 221.0 / 255.0, green: 221.0 / 255.0, blue: 221.0 / 255.0, alpha: 1.0)
 
     // 高亮轨道
-    public var trackWidth = CGFloat(7.0)
+    public var trackWidth: CGFloat = 7
     public var trackColor = UIColor(red: 80.0 / 255.0, green: 210.0 / 255.0, blue: 17.0 / 255.0, alpha: 1.0)
     
     // 轨道默认贴着圆环的外边，给正值可以往内部来点，当然负值就能出去点...
-    public var trackOffset = CGFloat(0.0)
+    public var trackOffset: CGFloat = 0
     
     // 轨道的值 0.0 - 1.0，影响轨道圆弧的大小
     public var trackValue = 0.0
@@ -69,11 +79,6 @@ public class CircleView: UIView {
     
     private func setup() {
         backgroundColor = UIColor.clear
-    }
-
-    public func show(in view: UIView) {
-        sizeToFit()
-        view.addSubview(self)
     }
 
     // 点是否在内圆中

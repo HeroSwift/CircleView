@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  Example
-//
-//  Created by zhujl on 2018/8/15.
-//  Copyright © 2018年 finstao. All rights reserved.
-//
 
 import UIKit
 
@@ -26,8 +19,9 @@ class ViewController: UIViewController {
         
         circleView.centerImage = UIImage(named: "preview")
         
-        circleView.frame = CGRect(x: 150, y: 150, width: 0, height: 0)
-        circleView.show(in: view)
+        circleView.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
+        circleView.sizeToFit()
+        view.addSubview(circleView)
 
         view.backgroundColor = UIColor.gray
     }
@@ -38,15 +32,23 @@ extension ViewController: CircleViewDelegate {
     
     func circleViewDidTouchDown(_ circleView: CircleView) {
         print("touch down")
-        circleView.centerColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
+        circleView.ringWidth = 20
+        circleView.ringColor = UIColor.red
+        circleView.centerRadius = 50
+        circleView.centerColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
         circleView.centerImage = UIImage(named: "delete")
+        circleView.sizeToFit()
         circleView.setNeedsDisplay()
     }
     
     func circleViewDidTouchUp(_ circleView: CircleView, _ inside: Bool) {
         print("touch up, inside: \(inside)")
+        circleView.ringWidth = 4
+        circleView.ringColor = UIColor.red
+        circleView.centerRadius = 30
         circleView.centerColor = UIColor.white
         circleView.centerImage = UIImage(named: "preview")
+        circleView.sizeToFit()
         circleView.setNeedsDisplay()
     }
     
