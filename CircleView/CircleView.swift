@@ -69,16 +69,11 @@ public class CircleView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        backgroundColor = UIColor.clear
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-    
-    private func setup() {
-        backgroundColor = UIColor.clear
+        fatalError("init(coder:) has not been implemented")
     }
 
     // 点是否在内圆中
@@ -105,10 +100,6 @@ public class CircleView: UIView {
         isTouching = false
         isTouchInside = false
         delegate?.circleViewDidTouchUp(self, inside)
-    }
-
-    public override func sizeToFit() {
-        frame = CGRect(origin: frame.origin, size: CGSize(width: 2 * radius, height: 2 * radius))
     }
 
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

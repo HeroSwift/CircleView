@@ -16,6 +16,16 @@
 		9D08303121242A25002052DB /* CircleViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D08302F21242A25002052DB /* CircleViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9D001B77217F64D700104861 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9D083004212429EB002052DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9D08300C212429EB002052DB;
+			remoteInfo = CircleView;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		9D08300D212429EB002052DB /* CircleView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CircleView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D083011212429EB002052DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -131,6 +141,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9D001B78217F64D700104861 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -215,6 +226,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9D001B78217F64D700104861 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9D08300C212429EB002052DB /* CircleView */;
+			targetProxy = 9D001B77217F64D700104861 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9D08302221242A09002052DB /* Main.storyboard */ = {

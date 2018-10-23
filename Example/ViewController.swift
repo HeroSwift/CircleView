@@ -18,12 +18,15 @@ class ViewController: UIViewController {
         circleView.trackValue = 0.3
         
         circleView.centerImage = UIImage(named: "preview")
+        circleView.translatesAutoresizingMaskIntoConstraints = false
         
-        circleView.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
-        circleView.sizeToFit()
         view.addSubview(circleView)
-
-        view.backgroundColor = UIColor.gray
+        view.backgroundColor = UIColor(red: 230 / 255, green: 230 / 255, blue: 230 / 255, alpha: 1)
+        
+        view.addConstraints([
+            NSLayoutConstraint(item: circleView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 100),
+            NSLayoutConstraint(item: circleView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 200),
+        ])
     }
     
 }
@@ -37,7 +40,6 @@ extension ViewController: CircleViewDelegate {
         circleView.centerRadius = 50
         circleView.centerColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
         circleView.centerImage = UIImage(named: "delete")
-        circleView.sizeToFit()
         circleView.setNeedsDisplay()
     }
     
@@ -48,7 +50,6 @@ extension ViewController: CircleViewDelegate {
         circleView.centerRadius = 30
         circleView.centerColor = UIColor.white
         circleView.centerImage = UIImage(named: "preview")
-        circleView.sizeToFit()
         circleView.setNeedsDisplay()
     }
     
