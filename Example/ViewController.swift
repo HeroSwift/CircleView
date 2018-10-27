@@ -43,8 +43,8 @@ extension ViewController: CircleViewDelegate {
         circleView.setNeedsDisplay()
     }
     
-    func circleViewDidTouchUp(_ circleView: CircleView, _ inside: Bool) {
-        print("touch up, inside: \(inside)")
+    func circleViewDidTouchUp(_ circleView: CircleView, _ inside: Bool, _ isLongPress: Bool) {
+        print("touch up, inside: \(inside), longPress: \(isLongPress)")
         circleView.ringWidth = 4
         circleView.ringColor = UIColor.red
         circleView.centerRadius = 30
