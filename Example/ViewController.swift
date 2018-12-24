@@ -12,20 +12,21 @@ class ViewController: UIViewController {
         
         circleView.delegate = self
         
-        circleView.ringWidth = 4
-        circleView.trackWidth = 2
-        circleView.trackOffset = 2
-        circleView.trackValue = 0.3
+        circleView.centerRadius = 80
+        circleView.ringWidth = 20
+        circleView.trackWidth = 10
+        circleView.trackOffset = 5
+        circleView.trackValue = 0.5
         
-        circleView.centerImage = UIImage(named: "preview")
+        circleView.centerImage = UIImage(named: "delete")
         circleView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(circleView)
         view.backgroundColor = UIColor(red: 230 / 255, green: 230 / 255, blue: 230 / 255, alpha: 1)
         
         view.addConstraints([
-            NSLayoutConstraint(item: circleView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 100),
-            NSLayoutConstraint(item: circleView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 200),
+            NSLayoutConstraint(item: circleView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: circleView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0),
         ])
     }
     
